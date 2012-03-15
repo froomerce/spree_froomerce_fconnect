@@ -1,0 +1,72 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  froomerces: Froomerce
+  export_shop: Export Shop
+  export_facebook: Export Facebook
+
+  having_problem: Having Problems? Contact Us
+  here: here
+  reset: Reset
+  auth: Authenticate
+  shop_success: Your Shop has been Successfully Exported!
+  shop_select: Please select a shop first!
+  widget_saved: Your widget has been exported, click
+  widget_continue: to post to Facebook wall.
+  notify_truncate: All Plugin tables are truncated!
+  
+  error:
+    e100: An internal error occurred, Please try again!
+    e101: An internal error occurred, Please try again!
+    e102: An internal error occurred, Please try again!
+    e103: An internal error occurred, Please try again!
+    e104: Credentials are Invalid, Please try again! 
+    e105: User is not a Merchant
+    e106: Could not connect to server, Please try again!
+    e107: An internal error occurred, Please try again!
+    e108: Invalid user
+    e109: An internal error occurred, Please try again!
+    e110: An internal error occurred, Please try again!
+    e111: An internal error occurred, Please try again!
+    e112: We were not able to export your widget yet, Please try agian!
+    validation_error: Wrong format of credentials!
+    HTTPfaliure: Could not access the server, Plaese try again!
+    no_session: Please login first!
+    shop_error: Shop could not be created due to some error, Please try again!
+    invalid_selection: Please select shop and a region to export!
+    invalid_widget_selection: Please select atleast 1 product to post a widget.
+    no_privilege: You are not privileged to truncate Plugin Data.
+
+  admin:
+    froomerces:
+      index:
+        heading: Add Froomerce User
+        user_info: User Information
+        user: Froomerce User
+        password: Froomerce Password
+        
+      export_shop:
+        heading: Export to Froomerce
+        select_shop: Select one of your shops to export to froomerce
+        export: Export to Froomerce
+        main_shop: Main Shop
+        choose_region: Choose the region that is related to your shop
+        
+      export_facebook:
+        heading: Export to Facebook
+        description: Only those shops can be exported to facebook which are already exported to froomerce
+        export_facebook: Export Shop to Facebook
+        export_widget: Export Widget to Facebook
+        submit: Export
+        main_shop: Main Shop
+        exported: Exported!
+        not_exported: Not exported to Froomerce yet!
+        
+      export_facebook_widgets:
+        heading: Export as widget to Facebook
+        id: ID
+        count_on_hand: Quantity
+        submit: Submit
+        filter: Filter
+        export: Export
