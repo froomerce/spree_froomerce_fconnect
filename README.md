@@ -57,7 +57,7 @@ you also get direct phone support.
 
 ## Requirements
 
-`spree_froomerce_fconnect` requires `0.70.x`.
+`spree_froomerce_fconnect` requires `Spree 0.70.x`.
 And it is not compatible with `Rails 2.x`
 
 # Installation
