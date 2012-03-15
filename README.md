@@ -7,6 +7,8 @@ to reach your customers on Facebook directly from the wall. You can also
 run social campaigns to promote your products and engage customers.
 All of this can be done without writing a single line of code! 
 
+This extensions requires you to create an account on [Froomerce F.Connect](http://froomerce.com/merchant/merchantplatform/fconnect)
+
 
 ## Your Benefits
 
