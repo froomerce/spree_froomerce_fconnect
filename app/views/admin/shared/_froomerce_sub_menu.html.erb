@@ -1,0 +1,8 @@
+<% unless FroomerceUser.first.nil? %>
+<% content_for :sub_menu do %>
+<ul id="sub_nav">
+    <%= tab :export_shop, :css_class => ( params[:action] == "export_shop" ) ? "selected" : "" %>
+    <%= tab :export_facebook, :label => 'admin.froomerces.export_facebook.heading', :css_class => ( params[:action] == "export_facebook" || params[:action] == "export_facebook_widgets" ) ? "selected last" : "last" %>
+</ul>
+<% end %>
+<% end %>

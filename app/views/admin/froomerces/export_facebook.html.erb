@@ -1,0 +1,122 @@
+<%= render :partial => 'admin/shared/froomerce_sub_menu' %>
+<div class="flash error" id="forced">
+</div>
+<div>
+    <div>
+        <h1><%= t('.heading') %></h1>
+    </div>
+    <fieldset>
+        <div id="hd-bar">
+            <%= t('.description') %>
+            <div style="float:right;margin-top:-1px;">
+                <%=t('having_problem') %><a href="mailto:support@froomerce.com"><%=t('here') %></a>
+            </div>
+        </div>
+        <br/>
+        <div id ="export">
+            <b><%= t('.export_facebook') %></b>
+        </div>
+        <br/>
+        <div id="contactBox">
+            <form id="form_facebook" action="<%= @action %>" method="post" target="_blank" remote="true">
+                <ul style="list-style:none; float: left; margin-bottom: 30px;">
+                    <li style="list-style:none; float: left; width: 250px;">
+                        <b><%= t('.main_shop') %></b>
+                    </li>
+                    <% if @config && !@flag.nil? %>
+                    <% if @flag %>
+                    <li style="list-style:none;width: 250px;float: left;margin-left: 100px;">
+                        <%= t('.exported') %>
+                    </li>
+                </ul>
+                <div style="clear: both">
+                </div>
+            </form>
+            <% else %>
+            <input type="radio" id="check_facebook" style="float: left;margin-left: 100px;"><input type="hidden" name="secret_token" value="<%=@token%>"><input type="hidden" name="email" value="<%=@user.email%>"><input type="hidden" name="password" value="<%=@user.password%>"><input type="hidden" name="user_id" value="<%=@user.froomerce_user_id%>"><input type="hidden" name="shop_id" value="<%=@config.froomerce_shop_id%>"><input type="hidden" name="action_type" value="export_shop">
+            <br/>
+            </ul>
+            <div style="clear: both">
+            </div>
+            <div style="margin-left:20px; margin-bottom: 30px;">
+                <button type="reset">
+                    <span><%= t('reset') %></span>
+                </button>
+                <button type="button" id="submit_facebook">
+                    <span><%= t('.submit') %></span>
+                </button>
+            </div>
+        </form>
+        <% end %>
+        <% else %>
+        <ul>
+            <li style="list-style:none; margin-top:-18px; width: 250px;float: left;margin-left: 100px;">
+                <%= t('.not_exported') %>
+            </li>
+        </ul>
+        <div class="clr">
+        </div>
+        </div>
+        <% end %>
+        <br/>
+        <div style="clear: both">
+        </div>
+        <div id ="export">
+            <b><%= t('.export_widget') %></b>
+        </div>
+        <br/>
+        <div id="contactBox">
+            <%= form_tag url_for(:action => "export_facebook_widgets"),  :id => 'form_widgets' %>
+            <ul style="list-style:none; float: left; margin-bottom: 30px;">
+                <li style="list-style:none; float: left; width: 250px;">
+                    <b><%= t('.main_shop') %></b>
+                </li>
+                <% if @config && !@flag.nil? %>
+                <input id="shop_id" type="radio" value="1" name="shop_id" style="float: left;margin-left: 100px;">
+                <br/>
+            </ul>
+            <div style="clear: both">
+            </div>
+            <div style="margin-left:20px; margin-bottom: 30px;">
+                <button type="reset">
+                    <span><%= t('reset') %></span>
+                </button>
+                <button type="button" id="submit_widget">
+                    <span><%= t('.submit') %></span>
+                </button>
+            </div>
+            <div class="clr">
+            </div>
+        </div>
+        <% else %>
+        <ul>
+            <li style="list-style:none; margin-top:-18px; width: 250px;float: left;margin-left: 100px;">
+                <%= t('.not_exported') %>
+            </li>
+        </ul>
+        <% end %>
+    </fieldset>
+</div>
+<script type="text/javascript">
+    $("document").ready(function(){
+        $("#forced").hide();
+        $("#submit_facebook").click(function(){
+            if ($("#check_facebook").is(':checked')) {
+                $('#form_facebook').submit();
+            }
+            else {
+                $("#forced").html("<%= t('shop_select') %>");
+                $("#forced").show();
+            }
+        });
+        $("#submit_widget").click(function(){
+            if ($("#shop_id").is(':checked')) {
+                $('#form_widgets').submit();
+            }
+            else {
+                $("#forced").html("<%= t('shop_select') %>");
+                $("#forced").show();
+            }
+        });
+    });
+</script>

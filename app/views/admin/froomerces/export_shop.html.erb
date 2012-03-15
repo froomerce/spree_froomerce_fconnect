@@ -1,0 +1,56 @@
+<%= render :partial => 'admin/shared/froomerce_sub_menu' %>
+<div>
+    <div>
+        <h1><%= t('.heading') %></h1>
+    </div>
+    <fieldset>
+        <div id="hd-bar">
+            <h2><%= t('.select_shop') %></h2>
+            <div style="float:right;margin-top:-28px;">
+                <%=t('having_problem') %><a href="mailto:support@froomerce.com"><%=t('here') %></a>
+            </div>
+        </div>
+        <div id="contactBox">
+            <%= form_for :froomerce_config, :url => { :action =>  "create_shop"} do %>
+            <ul>
+                <br/>
+                <div>
+                    <li style="list-style:none;margin-left:40px;">
+                        <%=t('.main_shop') %>
+                    </li>
+                    <% if @froomerce_config == "" %>
+                    <input id="froomerce_config_shop_id" type="radio" value="1" name="froomerce_config[shop_id]" style="margin-top: -20px;float: left;margin-left: 300px;"><% else %>
+                    <p style="margin-top: -20px;float: left;margin-left: 300px;">
+                        <%= @froomerce_config.status %>!
+                    </p>
+                    <% end %>
+                </div>
+                <br/>
+                <% unless @regions == "" %>
+                <li style="list-style:none">
+                    <b><%=t('.choose_region') %></b>
+                </li>
+                <% @regions['regions'].each do |hash| %>
+                <div style="margin-top: 20px; margin-bottom: 5px;">
+                    <%= image_tag "#{hash['region_flag']}" %>
+                </div>
+                <div style="float: left; margin-top: -20px; margin-left: 39px;">
+                    <%=hash['region_name'] %>
+                </div>
+                <input id="froomerce_config_region_id_<%=hash['id'] %>" type="radio" value="<%=hash['id']%>" name="froomerce_config[region_id]" style="margin-top: -20px;float: left;margin-left: 300px;"><% end %>
+            </ul>
+            <div style="margin-left:20px">
+                <button type="reset">
+                    <span><%= t('reset') %></span>
+                </button>
+                <button type="submit">
+                    <span><%= t('.export') %></span>
+                </button>
+            </div>
+            <% end %>
+            <% end %>
+            <div class="clr">
+            </div>
+        </div>
+    </fieldset>
+</div>

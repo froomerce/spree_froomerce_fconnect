@@ -1,0 +1,39 @@
+<div>
+    <div>
+        <h1><%= t('.heading') %></h1>
+    </div>
+    <fieldset>
+    <div>
+        <h2><%= t('.user_info') %></h2>
+        <div style="float:right;margin-top:-28px;">
+            <%=t('having_problem') %><a href="mailto:support@froomerce.com"><%=t('here') %></a>
+        </div>
+    </div>
+    <center>
+        <div>
+            <ul>
+                <%= form_for :froomerce_user, :url => {:action => :create} do |f| %>
+                <p>
+                    <%= f.label :email, t('.user') %>
+                    <%= f.text_field :email, :style => "margin-left:25px", :size => 60 %>
+                    <br/>
+                    <%= f.label :password, t('.password') %>
+                    <%= f.password_field :password, :size => 60 %>
+                    <br/>
+                </p>
+                <div>
+                    <button type="reset">
+                        <span><%= t('reset') %></span>
+                    </button>
+                    <button type="submit">
+                        <span><%= t('auth') %></span>
+                    </button>
+                </div>
+                <% end %>
+            </ul>
+            <div>
+            </div>
+        </div>
+    </center>
+</div>
+</fieldset>

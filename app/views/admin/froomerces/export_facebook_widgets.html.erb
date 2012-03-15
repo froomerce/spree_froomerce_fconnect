@@ -1,0 +1,108 @@
+<%= render :partial => 'admin/shared/froomerce_sub_menu' %>
+<div>
+    <h1><%= t('.heading') %></h1>
+    <div>
+        <%= form_tag :action => :make_widget, :method => :post do %>
+        <div style="float:right;margin-top:-56px;">
+            <button type="reset">
+                <span><%= t('reset') %></span>
+            </button>
+            <button type="submit">
+                <span><%= t('.export') %></span>
+            </button>
+        </div>
+        <fieldset>
+            <table class="index" id="listing_products">
+                <tr>
+                    <th>
+                        <p>
+                        </p>
+                    </th>
+                    <th>
+                        <%=sort_link @search,:id, t('.id') %>
+                    </th>
+                    <th>
+                        <%=sort_link @search,:sku, t(:sku) %>
+                    </th>
+                    <th>
+                        <%=sort_link @search,:name, t(:name) %>
+                    </th>
+                    <th>
+                        <%=sort_link @search,:master_price, t(:master_price) %>
+                    </th>
+                    <th>
+                        <%=sort_link @search,:count_on_hand, t('.count_on_hand') %>
+                    </th>
+                </tr>
+                <% i = 0 %>
+                <% @products.each do |product| %>
+                <tr id="<%= dom_id product %>" data-hook="admin_products_index_rows">
+                    <td>
+                        <%= check_box_tag "[product_ids][]", product.id %>
+                    </td>
+                    <td>
+                        <%= product.id rescue '' %>
+                    </td>
+                    <td>
+                        <%= product.sku rescue '' %>
+                    </td>
+                    <td>
+                        <%= product.name rescue '' %>
+                    </td>
+                    <td>
+                        <%= number_to_currency product.price rescue '' %>
+                    </td>
+                    <td>
+                        <%= product.count_on_hand rescue '' %>
+                    </td>
+                </tr>
+                <% i += 1 %>
+                <% end %>
+            </table>
+            <% end %>
+        </fieldset>
+    </div>
+    <%= paginate @products %>
+    <% content_for :sidebar do %>
+    <div"><%= form_for @search, :url => 'export_widgets_to_facebook' do |f| %>
+    <div class="box">
+        <h3><%= t(:search) %></h3>
+        <%- locals = {:f => f} %>
+        <div>
+            <p>
+                <%= f.label :name_contains, t(:name) %>
+                <br/>
+                <%= f.text_field :name_contains, :size => 15 %>
+            </p>
+            <p>
+                <%= f.label :variants_including_master_sku_contains, t(:sku) %>
+                <br/>
+                <%= f.text_field :variants_including_master_sku_contains, :size => 15 %>
+            </p>
+            <p>
+                <%= f.label :master_price_gte, t(:master_price) %>
+                <br/>
+                <%= f.text_field :master_price_gte, :size => 8 %>
+                <%= f.label :master_price_lte, "to" %>
+                <%= f.text_field :master_price_lte, :size => 8 %>
+            </p>
+            <p>
+                <%= f.label :count_on_hand_gte, t('.count_on_hand') %>
+                <br/>
+                <%= f.text_field :count_on_hand_gte, :size => 8 %>
+                <%= f.label :count_on_hand_lte, "to" %>
+                <%= f.text_field :count_on_hand_lte, :size => 8 %>
+            </p>
+        </div>
+        <div>
+            <p class="form-buttons">
+                <button type="submit">
+                    <span><%= t('.filter') %></span>
+                </button>
+            </p>
+        </div>
+    </div>
+    <% end %>
+</div>
+<% end %>
+<div>

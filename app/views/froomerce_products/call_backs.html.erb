@@ -1,0 +1,25 @@
+<script src="/assets/store/all.js" type="text/javascript">
+</script>
+<%= form_tag populate_orders_path, :id => 'add_to_cart', :method => :post do %>
+<% @products.each do |product_id,variant_id| %>
+<input type="hidden" name="products[<%=product_id%>]" value="<%=variant_id%>"><%end %>
+<% @quantity.each do |variant_id,quantity| %>
+<input type="hidden" name="variants[<%=variant_id%>]" value="<%=quantity%>"><%end %>
+<% end %>
+<%= form_tag empty_cart_path, :id => 'flush_cart', :method => :put do %>
+<%end %>
+<div style='text-align:center;margin-top:200px'>
+    <%= image_tag 'loading.gif', :alt => '' %>
+    <p>
+        <h2>loading..........</h2>
+    </p>
+</div>
+<script type="text/javascript">
+    $.ajax({
+        type: "PUT",
+        url: '/cart/empty',
+        success: function(){
+            $('#add_to_cart').submit();
+        }
+    });
+</script>
