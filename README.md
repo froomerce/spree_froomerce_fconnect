@@ -65,9 +65,12 @@ And it is not compatible with `Rails 2.x`
 # Installation
 
 spree_froomerce_fconnect is distributed as a gem, which is how it should be used in your application.
+Follwoing steps are to be performed consecutively for this extension to work properly: 
 
-    gem "spree_froomerce_fconnect"
-    
-Then run bundler to install the extenstion.
+    * Add following line to the Gemfile: `gem "spree_froomerce_fconnect"`
+    * Then run bundler to install the gem
+    * Run `rails g spree_froomerce_fconnect:install` to add and run required migrations.
+
+And you are ready to go!
 
 Copyright (c) 2012 Ali Naqi, released under the New BSD License
