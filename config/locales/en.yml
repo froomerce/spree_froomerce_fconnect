@@ -7,7 +7,7 @@ en:
   export_facebook: Export Facebook
 
   having_problem: Having Problems? Contact Us
-  here: here
+  here: " here"
   reset: Reset
   auth: Authenticate
   shop_success: Your Shop has been Successfully Exported!
