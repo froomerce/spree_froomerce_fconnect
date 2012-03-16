@@ -41,7 +41,7 @@ configure the store to have “Want” and “Need” buttons.
 
 You get detailed statistics on not only the products but also demographics from
 Facebook Page e.g., how many males and females came on your page, what were their
-age groups etc. You receive weekly statistics emails.
+age groups etc. You receive weekly statistics E-Mails.
 
 ### Custom campaigns
 
@@ -65,12 +65,11 @@ And it is not compatible with `Rails 2.x`
 # Installation
 
 spree_froomerce_fconnect is distributed as a gem, which is how it should be used in your application.
-Follwoing steps are to be performed consecutively for this extension to work properly: 
+Following steps are to be performed consecutively for this extension to work properly:
 
-* Add following line to the Gemfile: `gem "spree_froomerce_fconnect"`
-or
-* To use the latest version add 'gem "spree_froomerce_fconnect', :git => 'git@github.com:froomerce/spree_froomerce_fconnect.git'`
-* Then run bundler to install the gem
+* Add following line to the Gemfile: `gem 'spree_froomerce_fconnect'` or
+* To use the latest version add `gem 'spree_froomerce_fconnect', :git => 'git@github.com:froomerce/spree_froomerce_fconnect.git'` in your Gemfile.
+* Then run bundle to install the gem
 * Run `rails g spree_froomerce_fconnect:install` to add and run required migrations.
 
 And you are ready to go!
