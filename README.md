@@ -69,7 +69,7 @@ Following steps are to be performed consecutively for this extension to work pro
 
 * Add following line to the Gemfile: `gem 'spree_froomerce_fconnect'` or
 * To use the latest version add `gem 'spree_froomerce_fconnect', :git => 'git@github.com:froomerce/spree_froomerce_fconnect.git'` in your Gemfile.
-* Then run bundle to install the gem
+* Then run `bundle install` to install the gem
 * Run `rails g spree_froomerce_fconnect:install` to add and run required migrations.
 
 And you are ready to go!

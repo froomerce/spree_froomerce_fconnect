@@ -61,19 +61,11 @@ class FroomerceProductsController < ApplicationController
   end
   
   def truncate_all_tables
-    if FroomerceUser.first.email.eql? 'dummy.export@servis.pk'
-      FroomerceUser.delete_all
-      FroomerceConfig.delete_all
-      FroomerceProductStatus.delete_all
-      flash[:notice] = I18n.t('notify_truncate')
-      redirect_to admin_froomerce_path
-      return
-    else
-      flash[:error] = I18n.t('.error.no_privilege')
-      redirect_to admin_export_shop_path
-      return
-    end
-    
+    FroomerceUser.delete_all
+    FroomerceConfig.delete_all
+    FroomerceProductStatus.delete_all
+    flash[:notice] = I18n.t('notify_truncate')
+    redirect_to admin_froomerce_path
   end
   
 end
