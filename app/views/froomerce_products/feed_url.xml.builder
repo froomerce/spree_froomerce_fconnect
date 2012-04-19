@@ -59,7 +59,7 @@ xml.data do
       end
     end
   end
-  if @taxon && @page_no == 1
+  if @taxon and @page_no == 1
     xml.categories do
       @taxon.each do |tax|
         if tax.parent_id.blank?
@@ -68,6 +68,7 @@ xml.data do
               xml.parent_id{xml.cdata!("0")}
               xml.category_id{xml.cdata!("#{tax.id}")}
               xml.category_name{xml.cdata!(tax.name)}
+              xml.position{xml.cdata!("#{tax.lft}")}
             end
           end
         else
@@ -75,12 +76,13 @@ xml.data do
             xml.parent_id{xml.cdata!("#{tax.parent_id}")}
             xml.category_id{xml.cdata!("#{tax.id}")}
             xml.category_name{xml.cdata!(tax.name)}
+            xml.position{xml.cdata!("#{tax.lft}")}
           end
         end
       end
     end
   end
-  if @page_no
+  unless @flag
     xml.next_page{xml.cdata!(root_url+"froomerce_feed?page=#{@page_no+1}&per_page=#{FroomerceConfig::FEED_CONFIG[:feed_per_page]}")}
   end
 end

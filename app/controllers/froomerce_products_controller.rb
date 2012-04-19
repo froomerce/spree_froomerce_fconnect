@@ -7,9 +7,9 @@ class FroomerceProductsController < ApplicationController
     @products = searcher.retrieve_products
     @taxon = nil
     if Taxonomy.exists?
-      @taxon = Taxon.find(:all)
+      @taxon = Taxon.order('lft ASC')
     end
-    if @products.count < FroomerceConfig::FEED_CONFIG[:temp_limit]
+    if @products.size < FroomerceConfig::FEED_CONFIG[:temp_limit]
       config = FroomerceConfig.first
       user = FroomerceUser.first
       call = {'secret_token' => FroomerceConfig::VERIFICATION[:token],'user_id'=> user.froomerce_user_id, 'shop_id' => config.froomerce_shop_id, 'action_type' => 'update_feed_status' }
@@ -24,15 +24,16 @@ class FroomerceProductsController < ApplicationController
   end
   
   def feed_url
+    @flag = false
     @page_no = params[:page].to_i
     searcher = Spree::Config.searcher_class.new(params)
     @products = searcher.retrieve_products
-    if  @products.count < FroomerceConfig::FEED_CONFIG[:feed_per_page]
-      @page_no = nil
+    if  @products.size < FroomerceConfig::FEED_CONFIG[:feed_per_page]
+      @flag = true
     end
     @taxon = nil
     if Taxonomy.exists?
-      @taxon = Taxon.find(:all)
+      @taxon = Taxon.order('lft ASC')
     end
     render :template => 'froomerce_products/feed_url.xml.builder', :layout => false
   end

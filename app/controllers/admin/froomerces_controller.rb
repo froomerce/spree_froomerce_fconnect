@@ -123,7 +123,7 @@ class Admin::FroomercesController < Admin::BaseController
           flash[:error] = I18n.t(".error.e#{result['error']['code']}")
         end
       else
-        flash[:error] = I18n.t('.error.HTTPfaliur')
+        flash[:error] = I18n.t('.error.HTTPfaliure')
       end
     end
   end
@@ -165,7 +165,7 @@ class Admin::FroomercesController < Admin::BaseController
         flash[:error] = I18n.t(".error.e#{result['error']['code']}")
       end
     else
-      flash[:error] = I18n.t('.error.HTTPfaliur')
+      flash[:error] = I18n.t('.error.HTTPfaliure')
     end
     redirect_to(:action => "export_facebook_widgets")
   end
@@ -193,7 +193,7 @@ class Admin::FroomercesController < Admin::BaseController
         redirect_to :action => "index"
       end
     else
-      flash[:error] = I18n.t('.error.HTTPfaliur')
+      flash[:error] = I18n.t('.error.HTTPfaliure')
       redirect_to :action => "index"
     end
   end

@@ -68,6 +68,7 @@ xml.data do
               xml.parent_id{xml.cdata!("0")}
               xml.category_id{xml.cdata!("#{tax.id}")}
               xml.category_name{xml.cdata!(tax.name)}
+              xml.position{xml.cdata!("#{tax.lft}")}
             end
           end
         else
@@ -75,6 +76,7 @@ xml.data do
             xml.parent_id{xml.cdata!("#{tax.parent_id}")}
             xml.category_id{xml.cdata!("#{tax.id}")}
             xml.category_name{xml.cdata!(tax.name)}
+            xml.position{xml.cdata!("#{tax.lft}")}
           end
         end
       end

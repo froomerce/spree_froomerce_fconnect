@@ -12,32 +12,30 @@ class CallBacks
     return nil unless options.count > 1
     types = []
     types = options.collect {|opt| opt.option_type }
-    variants = Variant.find_all_by_product_id(id)
+    variants = product.variants
     prod_images = product.images.collect {|img| root_url.chop + img.attachment.url}
     product_images = prod_images.join('^')
     i = 0; j=0
     variants.each do |variant|
-      unless variant.is_master
-        values = variant.option_values.order('option_type_id ASC')
-        images = variant.images.collect {|img| root_url.chop + img.attachment.url}
-        additional_images = images.join('^')
-        if additional_images.blank?
-          additionl_images_url = product_images
-        else
-          additionl_images_url = product_images + '^' + additional_images
-        end
-        if additional_images.blank?
-          hash[i] = {'product_id' => variant.id, 'price' => variant.price}
-        else
-          hash[i] = {'product_id' => variant.id, 'price' => variant.price, 'additional_imgs' => additionl_images_url, 'cart_img' => root_url.chop +  variant.images.first.attachment.url}
-        end
-        types.each do |type|
-          hash[i][type.presentation] = values[j].presentation
-          j = j.succ
-        end
-        i = i.succ
-        j = 0
+      values = variant.option_values.order('option_type_id ASC')
+      images = variant.images.collect {|img| root_url.chop + img.attachment.url}
+      additional_images = images.join('^')
+      if additional_images.blank?
+        additionl_images_url = product_images
+      else
+        additionl_images_url = product_images + '^' + additional_images
       end
+      if additional_images.blank?
+        hash[i] = {'product_id' => variant.id, 'price' => variant.price}
+      else
+        hash[i] = {'product_id' => variant.id, 'price' => variant.price, 'additional_imgs' => additionl_images_url, 'cart_img' => root_url.chop +  variant.images.first.attachment.url}
+      end
+      types.each do |type|
+        hash[i][type.presentation] = values[j].presentation
+        j = j.succ
+      end
+      i = i.succ
+      j = 0
       additional_images = ''
       additionl_images_url = ''
     end
