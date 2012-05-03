@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.name         = 'spree_froomerce_fconnect'
-  s.version      = '0.70.4'
+  s.version      = '0.70.5'
   s.summary      = 'Create your store to Facebook and create product widgets for your Fan Page'
   s.description  = 'Create your store to Facebook and create product widgets for your Fan Page'
   s.required_ruby_version = '>= 1.8.7'

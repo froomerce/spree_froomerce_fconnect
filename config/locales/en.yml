@@ -45,6 +45,8 @@ en:
         user_info: User Information
         user: Froomerce User
         password: Froomerce Password
+        directive: In order to use the plugin, you need to register on Froomerce. Please click
+        resume_directive: to register now.
         
       export_shop:
         heading: Export to Froomerce

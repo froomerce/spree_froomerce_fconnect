@@ -1,6 +1,7 @@
 <div>
     <div>
         <h1><%= t('.heading') %></h1>
+		<p><%= t('.directive') %> <%= link_to(t('here'), 'http://www.froomerce.com/merchant/merchantplatform/fconnect', :target => '_blank') %> <%= t('.resume_directive')%> </p>
     </div>
     <fieldset>
     <div>
@@ -15,7 +16,7 @@
                 <%= form_for :froomerce_user, :url => {:action => :create} do |f| %>
                 <p>
                     <%= f.label :email, t('.user') %>
-                    <%= f.text_field :email, :style => "margin-left:25px", :size => 60 %>
+                    <%= f.email_field :email, :style => "margin-left:25px", :size => 60 %>
                     <br/>
                     <%= f.label :password, t('.password') %>
                     <%= f.password_field :password, :size => 60 %>
